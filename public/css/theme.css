@@ -1,19 +1,20 @@
 /* Digital Education - Theme
- * Primary: #81A6C6 | Secondary: #AACDDC | Background: #F3E3D0 | Accent: #D2C4B4
+ * Primary: #30364F | Secondary: #ACBAC4 | Accent: #E1D9BC | Background: #F0F0DB
  */
 :root {
-  --color-primary: #81A6C6;
-  --color-primary-dark: #6b8fa8;
-  --color-primary-light: #9bb9d4;
-  --color-secondary: #AACDDC;
-  --color-background: #F3E3D0;
-  --color-background-alt: #f8efe6;
-  --color-accent: #D2C4B4;
-  --color-accent-dark: #b8a898;
+  --color-primary: #30364F;
+  --color-primary-dark: #252b3d;
+  --color-primary-light: rgba(48, 54, 79, 0.12);
+  --color-secondary: #ACBAC4;
+  --color-secondary-dark: #96a5b0;
+  --color-background: #F0F0DB;
+  --color-background-alt: #e8e8d4;
+  --color-accent: #E1D9BC;
+  --color-accent-dark: #d0c8a8;
   --color-white: #ffffff;
-  --color-text: #3d3d3d;
-  --color-text-muted: #6b6b6b;
-  --color-border: #e5ddd4;
+  --color-text: #2d2d2d;
+  --color-text-muted: #5a5a5a;
+  --color-border: #d4dce2;
   --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.06);
   --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
   --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
@@ -70,8 +71,8 @@ body {
 }
 
 .app-navbar .nav-link:hover {
-  color: var(--color-white) !important;
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-accent);
+  color: var(--color-primary) !important;
 }
 
 .app-navbar .btn-outline-light {
@@ -110,15 +111,16 @@ main {
 /* Cards */
 .app-card {
   background: var(--color-white);
-  border: none;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 
 .app-card:hover {
   box-shadow: var(--shadow-md);
+  border-color: var(--color-secondary);
 }
 
 .app-card .card-body {
@@ -165,13 +167,17 @@ main {
   transform: translateY(-1px);
 }
 
+.btn-primary:focus {
+  box-shadow: 0 0 0 3px rgba(48, 54, 79, 0.25);
+}
+
 .btn-secondary {
-  background: var(--color-accent);
+  background: var(--color-secondary);
   color: var(--color-text);
 }
 
 .btn-secondary:hover {
-  background: var(--color-accent-dark);
+  background: var(--color-secondary-dark);
   color: var(--color-text);
 }
 
@@ -185,6 +191,10 @@ main {
   background: var(--color-primary);
   color: var(--color-white);
   border-color: var(--color-primary);
+}
+
+.btn-outline-primary:focus {
+  box-shadow: 0 0 0 3px rgba(48, 54, 79, 0.2);
 }
 
 .btn-outline-danger {
@@ -226,10 +236,15 @@ main {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+.form-control:hover,
+.form-select:hover {
+  border-color: var(--color-secondary);
+}
+
 .form-control:focus,
 .form-select:focus {
   border-color: var(--color-primary);
-  box-shadow: 0 0 0 3px rgba(129, 166, 198, 0.2);
+  box-shadow: 0 0 0 3px rgba(48, 54, 79, 0.2);
   outline: none;
 }
 
@@ -248,12 +263,13 @@ main {
 }
 
 .form-check-input:focus {
-  box-shadow: 0 0 0 3px rgba(129, 166, 198, 0.25);
+  box-shadow: 0 0 0 3px rgba(48, 54, 79, 0.25);
 }
 
 /* Tables */
 .table-wrapper {
   background: var(--color-white);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
   overflow: hidden;
@@ -286,7 +302,7 @@ main {
 }
 
 .table tbody tr:hover {
-  background: var(--color-background-alt);
+  background: rgba(225, 217, 188, 0.4);
 }
 
 .table-bordered {
@@ -322,7 +338,7 @@ main {
 
 /* Footer */
 .app-footer {
-  background: var(--color-accent) !important;
+  background: var(--color-secondary) !important;
   color: var(--color-text-muted);
   padding: var(--space-4) 0;
   font-size: 0.8125rem;
@@ -332,7 +348,7 @@ main {
 /* Auth / Login cards */
 .auth-card {
   background: var(--color-white);
-  border: none;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   box-shadow: var(--shadow-lg);
   overflow: hidden;
@@ -392,9 +408,16 @@ main {
   border-color: var(--color-border);
 }
 
+.pagination .page-link:hover {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  color: var(--color-primary);
+}
+
 .pagination .page-item.active .page-link {
   background: var(--color-primary);
   border-color: var(--color-primary);
+  color: var(--color-white);
 }
 
 /* Filter forms (inline) */
@@ -407,7 +430,7 @@ main {
 .card {
   border-radius: var(--radius-lg);
   box-shadow: var(--shadow-sm);
-  border: none;
+  border: 1px solid var(--color-border);
 }
 
 /* Textarea */
