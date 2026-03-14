@@ -14,22 +14,22 @@
             <div class="row g-4">
         <div class="col-md-6">
             <label class="form-label">Unique ID <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('unique_id') is-invalid @enderror" name="unique_id" value="{{ old('unique_id', $student->unique_id)">
+            <input type="text" class="form-control @error('unique_id') is-invalid @enderror" name="unique_id" value="{{ old('unique_id', $student->unique_id) }}">
             @error('unique_id')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Full Name <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name', $student->full_name)">
+            <input type="text" class="form-control @error('full_name') is-invalid @enderror" name="full_name" value="{{ old('full_name', $student->full_name) }}">
             @error('full_name')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Parent Contact Number <span class="text-danger">*</span></label>
-            <input type="text" class="form-control @error('parent_contact_number') is-invalid @enderror" name="parent_contact_number" value="{{ old('parent_contact_number', $student->parent_contact_number)">
+            <input type="text" class="form-control @error('parent_contact_number') is-invalid @enderror" name="parent_contact_number" value="{{ old('parent_contact_number', $student->parent_contact_number) }}">
             @error('parent_contact_number')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Parent Email <span class="text-danger">*</span></label>
-            <input type="email" class="form-control @error('parent_email') is-invalid @enderror" name="parent_email" value="{{ old('parent_email', $student->parent_email)">
+            <input type="email" class="form-control @error('parent_email') is-invalid @enderror" name="parent_email" value="{{ old('parent_email', $student->parent_email) }}">
             @error('parent_email')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
@@ -44,12 +44,12 @@
         </div>
         <div class="col-md-6">
             <label class="form-label">Weekly Max Hours <span class="text-danger">*</span></label>
-            <input type="number" step="0.01" min="0" class="form-control @error('weekly_max_hours') is-invalid @enderror" name="weekly_max_hours" value="{{ old('weekly_max_hours', $student->weekly_max_hours)">
+            <input type="number" step="0.01" min="0" class="form-control @error('weekly_max_hours') is-invalid @enderror" name="weekly_max_hours" value="{{ old('weekly_max_hours', $student->weekly_max_hours) }}">
             @error('weekly_max_hours')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Daily Max Hours <span class="text-danger">*</span></label>
-            <input type="number" step="0.01" min="0" class="form-control @error('daily_max_hours') is-invalid @enderror" name="daily_max_hours" value="{{ old('daily_max_hours', $student->daily_max_hours)">
+            <input type="number" step="0.01" min="0" class="form-control @error('daily_max_hours') is-invalid @enderror" name="daily_max_hours" value="{{ old('daily_max_hours', $student->daily_max_hours) }}">
             @error('daily_max_hours')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
