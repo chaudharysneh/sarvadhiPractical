@@ -3,8 +3,10 @@
 @section('title', 'Payouts')
 
 @section('content')
-<h2 class="mb-4">Teacher Payouts</h2>
-<form method="GET" class="row g-3 mb-4">
+<div class="page-header">
+    <h2>Teacher Payouts</h2>
+</div>
+<form method="GET" class="row g-3 mb-4 filter-form">
     <div class="col-auto">
         <label class="form-label">Date from</label>
         <input type="date" class="form-control" name="date_from" value="{{ $dateFrom->format('Y-m-d') }}">
@@ -26,22 +28,24 @@
         <button type="submit" class="btn btn-primary">Filter</button>
     </div>
 </form>
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr><th>Teacher</th><th>Sessions</th><th>Total Hours</th><th>Rate/Hr</th><th>Amount</th></tr>
-        </thead>
-        <tbody>
-            @foreach($teachers as $row)
-                <tr>
-                    <td>{{ $row->teacher->full_name }} ({{ $row->teacher->unique_id }})</td>
-                    <td>{{ $row->sessions_count }}</td>
-                    <td>{{ $row->total_hours }}</td>
-                    <td>{{ number_format($row->teacher->salary_per_hour, 2) }}</td>
-                    <td>{{ number_format($row->amount, 2) }}</td>
-                </tr>
-            @endforeach
-        </tbody>
-    </table>
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-bordered mb-0">
+            <thead>
+                <tr><th>Teacher</th><th>Sessions</th><th>Total Hours</th><th>Rate/Hr</th><th>Amount</th></tr>
+            </thead>
+            <tbody>
+                @foreach($teachers as $row)
+                    <tr>
+                        <td>{{ $row->teacher->full_name }} ({{ $row->teacher->unique_id }})</td>
+                        <td>{{ $row->sessions_count }}</td>
+                        <td>{{ $row->total_hours }}</td>
+                        <td>{{ number_format($row->teacher->salary_per_hour, 2) }}</td>
+                        <td>{{ number_format($row->amount, 2) }}</td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
 </div>
 @endsection

@@ -6,15 +6,11 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>@yield('title', 'Digital Education') - {{ config('app.name') }}</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <style>
-        body { min-height: 100vh; display: flex; flex-direction: column; }
-        main { flex: 1; }
-        .navbar-brand { font-weight: 600; }
-    </style>
+    <link href="{{ asset('css/theme.css') }}" rel="stylesheet">
     @stack('styles')
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <nav class="navbar navbar-expand-lg navbar-dark app-navbar">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">Digital Education</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,24 +54,24 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main>
         <div class="container">
             @if(session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">{{ session('success') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
             @if(session('error'))
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">{{ session('error') }}
-                    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             @endif
             @yield('content')
         </div>
     </main>
 
-    <footer class="bg-light py-3 mt-auto">
-        <div class="container text-center text-muted small">&copy; {{ date('Y') }} Digital Education System</div>
+    <footer class="app-footer mt-auto">
+        <div class="container text-center">&copy; {{ date('Y') }} Digital Education System</div>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
     @stack('scripts')

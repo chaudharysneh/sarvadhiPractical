@@ -3,8 +3,10 @@
 @section('title', 'My Sessions')
 
 @section('content')
-<h2 class="mb-4">My Sessions</h2>
-<form method="GET" class="row g-3 mb-4">
+<div class="page-header">
+    <h2>My Sessions</h2>
+</div>
+<form method="GET" class="row g-3 mb-4 filter-form">
     <div class="col-auto">
         <label class="form-label">Date from</label>
         <input type="date" class="form-control" name="date_from" value="{{ request('date_from') }}">
@@ -26,24 +28,26 @@
         <button type="submit" class="btn btn-primary">Filter</button>
     </div>
 </form>
-<div class="table-responsive">
-    <table class="table table-bordered">
-        <thead>
-            <tr><th>Date & Time</th><th>Teacher</th><th>Duration</th><th>Notes</th></tr>
-        </thead>
-        <tbody>
-            @forelse($sessions as $s)
-                <tr>
-                    <td>{{ $s->start_time->format('M d, Y H:i') }} – {{ $s->end_time->format('H:i') }}</td>
-                    <td>{{ $s->teacher->full_name }}</td>
-                    <td>{{ $s->duration_hours }} hrs</td>
-                    <td>{{ Str::limit($s->notes, 40) }}</td>
-                </tr>
-            @empty
-                <tr><td colspan="4" class="text-center">No sessions yet.</td></tr>
-            @endforelse
-        </tbody>
-    </table>
+<div class="table-wrapper">
+    <div class="table-responsive">
+        <table class="table table-bordered mb-0">
+            <thead>
+                <tr><th>Date & Time</th><th>Teacher</th><th>Duration</th><th>Notes</th></tr>
+            </thead>
+            <tbody>
+                @forelse($sessions as $s)
+                    <tr>
+                        <td>{{ $s->start_time->format('M d, Y H:i') }} – {{ $s->end_time->format('H:i') }}</td>
+                        <td>{{ $s->teacher->full_name }}</td>
+                        <td>{{ $s->duration_hours }} hrs</td>
+                        <td>{{ Str::limit($s->notes, 40) }}</td>
+                    </tr>
+                @empty
+                    <tr><td colspan="4" class="text-center py-4 text-muted">No sessions yet.</td></tr>
+                @endforelse
+            </tbody>
+        </table>
+    </div>
 </div>
 {{ $sessions->links() }}
 @endsection

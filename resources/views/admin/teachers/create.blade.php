@@ -3,10 +3,14 @@
 @section('title', 'Add Teacher')
 
 @section('content')
-<h2 class="mb-4">Add Teacher</h2>
-<form method="POST" action="{{ route('admin.teachers.store') }}">
-    @csrf
-    <div class="row g-3">
+<div class="page-header">
+    <h2>Add Teacher</h2>
+</div>
+<div class="card app-card">
+    <div class="card-body">
+        <form method="POST" action="{{ route('admin.teachers.store') }}">
+            @csrf
+            <div class="row g-4">
         <div class="col-md-6">
             <label class="form-label">Unique ID <span class="text-danger">*</span> <small class="text-muted">(6–12 alphanumeric)</small></label>
             <input type="text" class="form-control @error('unique_id') is-invalid @enderror" name="unique_id" value="{{ old('unique_id') }}">
@@ -52,9 +56,13 @@
             @error('salary_per_hour')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Create Teacher</button>
-            <a href="{{ route('admin.teachers.index') }}" class="btn btn-secondary">Cancel</a>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Create Teacher</button>
+                <a href="{{ route('admin.teachers.index') }}" class="btn btn-secondary">Cancel</a>
+            </div>
         </div>
     </div>
-</form>
+        </form>
+    </div>
+</div>
 @endsection
