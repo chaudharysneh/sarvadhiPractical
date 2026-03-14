@@ -27,7 +27,7 @@
         </div>
         <div class="col-md-6">
             <label class="form-label">Date of Birth</label>
-            <input type="date" class="form-control" name="dob" value="{{ old('dob', $student->dob->format('Y-m-d')) }}" required>
+            <input type="date" class="form-control" name="dob" value="{{ old('dob', $student->dob->format('Y-m-d')) }}" max="{{ \Carbon\Carbon::yesterday()->format('Y-m-d') }}" required>
         </div>
         <div class="col-md-6">
             <label class="form-label">Date of Join</label>

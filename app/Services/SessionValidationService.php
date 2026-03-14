@@ -18,9 +18,10 @@ class SessionValidationService
     {
         $errors = [];
 
-        $now = now();
-        if ($startTime->isFuture() || $endTime->isFuture()) {
-            $errors[] = 'Session must not be in the future. Use current or past date and time.';
+        // Only reject if the session date is in the future (use copy() so we don't mutate start/end)
+        $today = now()->startOfDay();
+        if ($startTime->copy()->startOfDay()->gt($today) || $endTime->copy()->startOfDay()->gt($today)) {
+            $errors[] = 'Session must not be on a future date. Use today or a past date.';
         }
         if ($startTime->gte($endTime)) {
             $errors[] = 'End time must be after start time.';

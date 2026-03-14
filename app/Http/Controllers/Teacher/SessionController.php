@@ -56,8 +56,10 @@ class SessionController extends Controller
             'documents.*' => 'nullable|file|mimes:doc,docx,pdf,txt|max:5120',
         ]);
 
-        $startTime = \Carbon\Carbon::parse($data['start_date'] . ' ' . $data['start_time']);
-        $endTime = \Carbon\Carbon::parse($data['end_date'] . ' ' . $data['end_time']);
+        // Parse in app timezone so "current date & time" matches server time (set APP_TIMEZONE in .env if needed, e.g. Asia/Kolkata)
+        $tz = config('app.timezone');
+        $startTime = \Carbon\Carbon::parse($data['start_date'] . ' ' . $data['start_time'], $tz);
+        $endTime = \Carbon\Carbon::parse($data['end_date'] . ' ' . $data['end_time'], $tz);
         $students = Student::whereIn('id', $data['student_ids'])->get();
 
         $errors = $validator->validate($students, $startTime, $endTime);

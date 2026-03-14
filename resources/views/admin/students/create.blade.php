@@ -29,7 +29,7 @@
         </div>
         <div class="col-md-6">
             <label class="form-label">Date of Birth</label>
-            <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" required>
+            <input type="date" class="form-control @error('dob') is-invalid @enderror" name="dob" value="{{ old('dob') }}" max="{{ \Carbon\Carbon::yesterday()->format('Y-m-d') }}" required>
             @error('dob')<div class="invalid-feedback">{{ $message }}</div>@enderror
         </div>
         <div class="col-md-6">
