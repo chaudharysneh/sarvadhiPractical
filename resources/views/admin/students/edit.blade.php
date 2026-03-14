@@ -3,11 +3,15 @@
 @section('title', 'Edit Student')
 
 @section('content')
-<h2 class="mb-4">Edit Student</h2>
-<form method="POST" action="{{ route('admin.students.update', $student) }}">
-    @csrf
-    @method('PUT')
-    <div class="row g-3">
+<div class="page-header">
+    <h2>Edit Student</h2>
+</div>
+<div class="card app-card">
+    <div class="card-body">
+        <form method="POST" action="{{ route('admin.students.update', $student) }}">
+            @csrf
+            @method('PUT')
+            <div class="row g-4">
         <div class="col-md-6">
             <label class="form-label">Unique ID <span class="text-danger">*</span></label>
             <input type="text" class="form-control @error('unique_id') is-invalid @enderror" name="unique_id" value="{{ old('unique_id', $student->unique_id)">
@@ -58,9 +62,13 @@
             <input type="password" class="form-control" name="password_confirmation">
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('admin.students.index') }}" class="btn btn-secondary">Cancel</a>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.students.index') }}" class="btn btn-secondary">Cancel</a>
+            </div>
         </div>
     </div>
-</form>
+        </form>
+    </div>
+</div>
 @endsection

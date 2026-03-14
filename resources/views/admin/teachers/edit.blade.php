@@ -3,11 +3,15 @@
 @section('title', 'Edit Teacher')
 
 @section('content')
-<h2 class="mb-4">Edit Teacher</h2>
-<form method="POST" action="{{ route('admin.teachers.update', $teacher) }}">
-    @csrf
-    @method('PUT')
-    <div class="row g-3">
+<div class="page-header">
+    <h2>Edit Teacher</h2>
+</div>
+<div class="card app-card">
+    <div class="card-body">
+        <form method="POST" action="{{ route('admin.teachers.update', $teacher) }}">
+            @csrf
+            @method('PUT')
+            <div class="row g-4">
         <div class="col-md-6">
             <label class="form-label">Unique ID <span class="text-danger">*</span></label>
             <input type="text" class="form-control @error('unique_id') is-invalid @enderror" name="unique_id" value="{{ old('unique_id', $teacher->unique_id) }}">
@@ -52,9 +56,13 @@
             @error('salary_per_hour')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">Update</button>
-            <a href="{{ route('admin.teachers.index') }}" class="btn btn-secondary">Cancel</a>
+            <div class="d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Update</button>
+                <a href="{{ route('admin.teachers.index') }}" class="btn btn-secondary">Cancel</a>
+            </div>
         </div>
     </div>
-</form>
+        </form>
+    </div>
+</div>
 @endsection
