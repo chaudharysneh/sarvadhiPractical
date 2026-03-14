@@ -15,8 +15,8 @@ A simple Laravel app for managing teachers, students, sessions, and payouts.
 ## Default Super Admin
 
 - **URL:** `/admin/login`
-- **Email:** `admin@digitaledu.com` (or set `DEFAULT_ADMIN_EMAIL` in `.env`)
-- **Password:** `password` (or set `DEFAULT_ADMIN_PASSWORD` in `.env`)
+- **Email:** `admin@digitaledu.com` 
+- **Password:** `password`
 
 ## Login
 
