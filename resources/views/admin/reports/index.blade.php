@@ -8,19 +8,19 @@
     @csrf
     <div class="row g-3">
         <div class="col-md-6">
-            <label class="form-label">Student</label>
-            <select class="form-select @error('student_id') is-invalid @enderror" name="student_id" required>
+            <label class="form-label">Student <span class="text-danger">*</span></label>
+            <select class="form-select @error('student_id') is-invalid @enderror" name="student_id">
                 <option value="">Select student</option>
                 @foreach($students as $s)
                     <option value="{{ $s->id }}" {{ old('student_id') == $s->id ? 'selected' : '' }}>{{ $s->full_name }} – {{ $s->parent_email }}</option>
                 @endforeach
             </select>
-            @error('student_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            @error('student_id')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
-            <label class="form-label">Month</label>
-            <input type="month" class="form-control @error('month') is-invalid @enderror" name="month" value="{{ old('month', date('Y-m')) }}" required>
-            @error('month')<div class="invalid-feedback">{{ $message }}</div>@enderror
+            <label class="form-label">Month <span class="text-danger">*</span></label>
+            <input type="month" class="form-control @error('month') is-invalid @enderror" name="month" value="{{ old('month', date('Y-m')) }}">
+            @error('month')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-12">
             <button type="submit" class="btn btn-primary">Send Report Email</button>
