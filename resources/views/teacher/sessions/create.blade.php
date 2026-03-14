@@ -28,22 +28,27 @@
                     <p class="text-muted mb-0">No students assigned to you. Ask admin to assign students.</p>
                 @endforelse
             </div>
+            @error('student_ids')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Start Date <span class="text-danger">*</span></label>
-            <input type="date" class="form-control" name="start_date" value="{{ old('start_date') }}" required>
+            <input type="date" class="form-control @error('start_date') is-invalid @enderror" name="start_date" value="{{ old('start_date') }}">
+            @error('start_date')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">Start Time <span class="text-danger">*</span></label>
-            <input type="time" class="form-control" name="start_time" value="{{ old('start_time') }}" required>
+            <input type="time" class="form-control @error('start_time') is-invalid @enderror" name="start_time" value="{{ old('start_time') }}">
+            @error('start_time')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">End Date <span class="text-danger">*</span></label>
-            <input type="date" class="form-control" name="end_date" value="{{ old('end_date') }}" required>
+            <input type="date" class="form-control @error('end_date') is-invalid @enderror" name="end_date" value="{{ old('end_date') }}">
+            @error('end_date')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-md-6">
             <label class="form-label">End Time <span class="text-danger">*</span></label>
-            <input type="time" class="form-control" name="end_time" value="{{ old('end_time') }}" required>
+            <input type="time" class="form-control @error('end_time') is-invalid @enderror" name="end_time" value="{{ old('end_time') }}">
+            @error('end_time')<span class="text-danger d-block">{{ $message }}</span>@enderror
         </div>
         <div class="col-12">
             <label class="form-label">Notes (optional)</label>

@@ -13,23 +13,23 @@
                 <form method="POST" action="{{ route('login.member.post') }}">
                     @csrf
                     <div class="mb-3">
-                        <label for="unique_id" class="form-label">Unique ID</label>
-                        <input type="text" class="form-control @error('unique_id') is-invalid @enderror" id="unique_id" name="unique_id" value="{{ old('unique_id') }}" required autofocus>
-                        @error('unique_id')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <label for="unique_id" class="form-label">Unique ID <span class="text-danger">*</span></label>
+                        <input type="text" class="form-control @error('unique_id') is-invalid @enderror" id="unique_id" name="unique_id" value="{{ old('unique_id') }}" autofocus>
+                        @error('unique_id')<span class="text-danger d-block">{{ $message }}</span>@enderror
                     </div>
                     <div class="mb-3">
-                        <label for="password" class="form-label">Password</label>
-                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password" required>
-                        @error('password')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
+                        <input type="password" class="form-control @error('password') is-invalid @enderror" id="password" name="password">
+                        @error('password')<span class="text-danger d-block">{{ $message }}</span>@enderror
                     </div>
                     <div class="mb-3">
-                        <label for="role" class="form-label">Role</label>
-                        <select class="form-select @error('role') is-invalid @enderror" id="role" name="role" required>
+                        <label for="role" class="form-label">Role <span class="text-danger">*</span></label>
+                        <select class="form-select @error('role') is-invalid @enderror" id="role" name="role">
                             <option value="">Select role</option>
                             <option value="teacher" {{ old('role') === 'teacher' ? 'selected' : '' }}>Teacher</option>
                             <option value="student" {{ old('role') === 'student' ? 'selected' : '' }}>Student</option>
                         </select>
-                        @error('role')<div class="invalid-feedback">{{ $message }}</div>@enderror
+                        @error('role')<span class="text-danger d-block">{{ $message }}</span>@enderror
                     </div>
                     <div class="mb-3 form-check">
                         <input type="checkbox" class="form-check-input" id="remember" name="remember">
